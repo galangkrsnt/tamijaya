@@ -19,21 +19,40 @@
                      @endphp
                         @if($j->buses->tipe == "Executive Class")
                         @for ( $x=1; $x <= $j->buses->jumlah_kursi; $x++)
-                        @if ($x%2!=0)
-                        @if (in_array($x,$kursiTerisi))
-                        <td><label><input  id="kursi" type="checkbox"  name="kursiBooked[]" value="{{ $x }}" checked onclick="return false">{{ $x }}</label></td>
+
+                        @if ($x == 1 || $x%3 == 0)
+                        @php
+                           $a++;
+                        @endphp
+                        @if (in_array($a."C",$kursiTerisi))
+                        <td><label><input id="kursi" type="checkbox" name="kursiBooked[]" checked disabled value="{{ $a }}C" onclick="return false">{{ $a }}C</label></td>
+                        @elseif ($x%3 == 0 && $x == 21)
+                        <td></td>
                         @else
-                        <td><label><input  id="kursi" type="checkbox" name="kursi[]" value="{{ $x }}">{{ $x }}</label></td>
+                        <td><label><input id="kursi" type="checkbox" name="kursi[]" value="{{ $a }}C">{{ $a }}C</label></td>
                         @endif
-                        @else
-                        <td><label><input  id="kursi" type="checkbox"  name="kursiDisabled[]" value="{{ $x }}" checked disabled>{{ $x }}</label></td>
+                        <td>   </td>
+                        @if (in_array($a."B",$kursiTerisi))
+                                <td><label><input id="kursi" type="checkbox" name="kursiBooked[]" checked disabled value="{{ $a }}B" onclick="return false">{{ $a }}B</label></td>
+                                @elseif ($x%3 == 0 && $x == 21)
+                                <td></td>
+                                @else
+                                <td><label><input id="kursi" type="checkbox" name="kursi[]" value="{{ $a }}B">{{ $a }}B</label></td>
                         @endif
-                        @if ($x%4==0)
-                            <tr></tr>
-                        @elseif($x%2==0)
-                            <td>   </td>
-                            <td>   </td>
-                            <td>   </td>
+                        <td>   </td>
+                        @if (in_array($a."A",$kursiTerisi))
+                                <td><label><input id="kursi" type="checkbox" name="kursiBooked[]" checked disabled value="{{ $a }}A" onclick="return false">{{ $a }}A</label></td>
+                                @elseif ($x%3 == 0 && $x == 21)
+                                <td><label><input id="kursi" type="checkbox" name="kursi[]" value="{{ $a }}A">{{ $a }}A</label></td>
+                                @break
+                                @else
+                                <td><label><input id="kursi" type="checkbox" name="kursi[]" value="{{ $a }}A">{{ $a }}A</label></td>
+                        @endif
+                        @endif
+                        <tr></tr>
+                        @if ($x%3==0)
+                        <tr></tr>
+
                         @endif
                         @endfor
 
@@ -53,29 +72,40 @@
                         @php
                            $a++;
                         @endphp
-                        @if (in_array($a."D",$kursiTerisi))
-                        <td><label><input id="kursi" type="checkbox" name="kursiBooked[]" checked value="{{ $a }}D" onclick="return false">{{ $a }}D</label></td>
-                        @else
-                        <td><label><input id="kursi" type="checkbox" name="kursi[]" value="{{ $a }}D">{{ $a }}D</label></td>
+                        @if (in_array($a."D",$kursiTerisi) )
+                                <td><label><input id="kursi" type="checkbox" name="kursiBooked[]" checked disabled value="{{ $a }}D" onclick="return false">{{ $a }}D</label></td>
+                                @elseif ($x%4 == 0 && $x == 20)
+                                <td></td>
+                                @else
+                                <td><label><input id="kursi" type="checkbox" name="kursi[]" value="{{ $a }}D">{{ $a }}D</label></td>
                         @endif
+
+
                         <td>   </td>
                         @if (in_array($a."B",$kursiTerisi))
-                        <td><label><input id="kursi" type="checkbox" name="kursiBooked[]" checked value="{{ $a }}B" onclick="return false">{{ $a }}B</label></td>
-                        @else
-                        <td><label><input id="kursi" type="checkbox" name="kursi[]" value="{{ $a }}B">{{ $a }}B</label></td>
+                                <td><label><input id="kursi" type="checkbox" name="kursiBooked[]" checked disabled value="{{ $a }}B" onclick="return false">{{ $a }}B</label></td>
+                                @elseif ($x%4 == 0 && $x == 20)
+                                <td></td>
+                                @else
+                                <td><label><input id="kursi" type="checkbox" name="kursi[]" value="{{ $a }}B">{{ $a }}B</label></td>
                         @endif
                         <td>   </td>
                         <td>   </td>
                         @if (in_array($a."C",$kursiTerisi))
-                        <td><label><input id="kursi" type="checkbox" name="kursiBooked[]" checked value="{{ $a }}C" onclick="return false">{{ $a }}C</label></td>
-                        @else
-                        <td><label><input id="kursi" type="checkbox" name="kursi[]" value="{{ $a }}C">{{ $a }}C</label></td>
+                                <td><label><input id="kursi" type="checkbox" name="kursiBooked[]" checked disabled value="{{ $a }}C" onclick="return false">{{ $a }}C</label></td>
+                                @elseif ($x%4 == 0 && $x == 20)
+                                <td></td>
+                                @else
+                                <td><label><input id="kursi" type="checkbox" name="kursi[]" value="{{ $a }}C">{{ $a }}C</label></td>
                         @endif
                         <td>   </td>
                         @if (in_array($a."A",$kursiTerisi))
-                        <td><label><input id="kursi" type="checkbox" name="kursiBooked[]" checked value="{{ $a }}A" onclick="return false">{{ $a }}A</label></td>
-                        @else
-                        <td><label><input id="kursi" type="checkbox" name="kursi[]" value="{{ $a }}A">{{ $a }}A</label></td>
+                                <td><label><input id="kursi" type="checkbox" name="kursiBooked[]" checked disabled value="{{ $a }}A" onclick="return false">{{ $a }}A</label></td>
+                                @elseif ($x%4 == 0 && $x == 20)
+                                <td><label><input id="kursi" type="checkbox" name="kursi[]" value="{{ $a }}A">{{ $a }}A</label></td>
+                                @break
+                                @else
+                                <td><label><input id="kursi" type="checkbox" name="kursi[]" value="{{ $a }}A">{{ $a }}A</label></td>
                         @endif
                         @endif
                         <tr></tr>
@@ -97,16 +127,11 @@
                     </table>
                     <h4>Keterangan : </h4>
                     <div style="padding-bottom: 30px">
-                    <input id="" type="checkbox" name="" value="{{ $x }}" checked onclick="return false"><span> Terisi</span>
+                    <input id="" type="checkbox" name="" value="{{ $x }}" checked disabled onclick="return false"><span> Terisi</span>
                     </div>
                     <div style="padding-bottom: 30px">
                     <input id="" type="checkbox" name="" value="{{ $x }}" onclick="return false"><span> Tersedia</span>
                     </div>
-                    @if($j->buses->tipe == "Executive Class")
-                    <div style="padding-bottom: 30px">
-                        <input id="" type="checkbox" name="" value="{{ $x }}" checked disabled><span> Dikosongkan selama pandemi covid-19</span>
-                    </div>
-                    @endif
 
                 </div>
                         <button type="submit" class="btn btn-primary">

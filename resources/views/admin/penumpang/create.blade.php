@@ -38,19 +38,51 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="ket_tempat_berangkat" class="col-md-4 col-form-label text-md-right">Keterangan Tempat Berangkat</label>
+                        @foreach ( $jadwal as $j)
+                            @if ($j->tempat_berangkat == "Yogyakarta")
 
-                            <div class="col-md-6">
-                                <input id="ket_tempat_berangkat" type="text" class="form-control @error('ket_tempat_berangkat') is-invalid @enderror" name="ket_tempat_berangkat[]">
+                            <div class="form-group row">
+                                <label for="ket_tempat_berangkat" class="col-md-4 col-form-label text-md-right">Keterangan Tempat Berangkat</label>
 
-                                @error('ket_tempat_berangkat')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <div class="col-md-6">
+                                    <select id="ket_tempat_berangkat" type="text" class="form-control @error('ket_tempat_berangkat') is-invalid @enderror" name="ket_tempat_berangkat[]">
+                                        <option value="Terminal Giwangan">Terminal Giwangan</option>
+                                        <option value="Kantor Jogja">Kantor Jogja</option>
+                                        <option value="Mirota Babarsari">Mirota Babarsari</option>
+                                        <option value="Prambanan">Prambanan</option>
+                                        <option value="Terminal Klaten">Terminal Klaten</option>
+                                        <option value="Agen Delangu">Agen Delangu</option>
+                                        <option value="Agen Solo">Agen Solo</option>
+                                    </select>
+
+                                    @error('ket_tempat_berangkat')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
+                            @elseif($j->tempat_berangkat == "Denpasar")
+                            <div class="form-group row">
+                                <label for="ket_tempat_berangkat" class="col-md-4 col-form-label text-md-right">Keterangan Tempat Berangkat</label>
+
+                                <div class="col-md-6">
+                                    <select id="ket_tempat_berangkat" type="text" class="form-control @error('ket_tempat_berangkat') is-invalid @enderror" name="ket_tempat_berangkat[]">
+                                        <option value="Terminal Mengwi">Terminal Mengwi</option>
+                                        <option value="Garasi">Garasi</option>
+                                        <option value="Agen Negara">Agen Negara</option>
+                                        <option value="Gilimanuk">Gilimanuk</option>
+                                    </select>
+
+                                    @error('ket_tempat_berangkat')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            @endif
+                        @endforeach
                         <div class="form-group row">
                             <label for="no_telp" class="col-md-4 col-form-label text-md-right">Nomor Telepon</label>
 

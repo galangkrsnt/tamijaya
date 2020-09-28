@@ -14,14 +14,25 @@
         <div class="container" style="padding-left: 150px">
             <h1 class="font-weight-light" style="margin-bottom: 100px">e-Ticket TAMI JAYA</h1>
             <table>
+                @php
+                    $x=0;
+                @endphp
                         @foreach ($pesanan as $pesan )
-                            <tr><td>Id Tiket : <code>{{ $pesan->id }}</code></td></tr>
-                            <tr><td>Jumlah Penumpang : {{ $pesan->jumlah_penumpang}}</td></tr>
-                            <tr><td>No Kursi : @foreach ($pesan->penumpang as $p)
-                                {{ $p->no_kursi }}
-                            @endforeach</td></tr>
-                            <tr><td>Total Pembayaran : Rp. {{ number_format($pesan->total_bayar) }},-</td></tr>
-                            <tr><td>Status : {{ ($pesan->status) }}</td></tr>
+
+                        @foreach ($pesan->penumpang as $p )
+                        @php
+                            $x++;
+                        @endphp
+                        <tr><td>Penumpang {{ $x }}</code></td></tr>
+                        <tr><td>Nama : {{ $p->nama }}</code></td></tr>
+                        <tr><td>Id Tiket : <code>{{ $pesan->id }}</code></td></tr>
+                        <tr><td>Jumlah Penumpang : {{ $pesan->jumlah_penumpang}}</td></tr>
+                        <tr><td>No Kursi : {{ $p->no_kursi }}</td></tr>
+                        <tr><td><hr></td></tr>
+                        @endforeach
+                        <tr><td>Total Pembayaran : Rp. {{ number_format($pesan->total_bayar) }},-</td></tr>
+                        <tr><td>Status : {{ ($pesan->status) }}</td></tr>
+
                 @endforeach
             </table>
         </div>

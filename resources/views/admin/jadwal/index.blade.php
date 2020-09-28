@@ -13,6 +13,23 @@
                             {{ route('jadwal.create') }}
                         </x-slot>
                     </x-tambah>
+                    <form method="POST" action="{{ route('jadwal.sorting') }}">
+                        @csrf
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <input id="tgl_keberangkatan" type="date" class="form-control @error('tgl_keberangkatan') is-invalid @enderror" name="tgl_keberangkatan">
+
+                            @error('tgl_keberangkatan')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                            <button type="submit" class="btn btn-primary">
+                                Search
+                            </button>
+                    </div>
+                    </form>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}

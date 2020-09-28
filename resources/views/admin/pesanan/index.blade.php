@@ -13,6 +13,23 @@
                             {{ route('jadwal.cari') }}
                         </x-slot>
                     </x-tambah>
+                    <form method="POST" action="{{ route('penumpang.sorting') }}">
+                        @csrf
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <input id="id" type="text" class="form-control @error('idpesan') is-invalid @enderror" name="idpesan" placeholder="id pesanan">
+
+                            @error('idpesan')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                            <button type="submit" class="btn btn-primary">
+                                Search
+                            </button>
+                    </div>
+                    </form>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}

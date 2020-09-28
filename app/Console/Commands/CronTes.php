@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Penumpang;
 use Illuminate\Console\Command;
 use App\Pesanan;
 use Carbon\Carbon;
@@ -41,6 +42,10 @@ class CronTes extends Command
     {
         $pesanan = Pesanan::where('created_at','<',Carbon::now()->subHours(6))
         ->where('status','menunggu pembayaran');
+        foreach ($pesanan as $p) {
+            $penumpang = Penumpang::where('id_pesan',$p->id)->get();
+            $penumpang->delete();
+        }
         $pesanan->delete();
     }
 }

@@ -182,4 +182,11 @@ class PenumpangController extends Controller
         return redirect()->route('penumpang.index')
             ->with('Berhasil', 'Jadwal berhasil dihapus');
     }
+
+    public function sorting(Request $request){
+        $idpesan = $request->get('idpesan');
+        $penumpang = Penumpang::where('id_pesan',$idpesan)->get();
+
+        return view('admin.penumpang.index', compact('penumpang'));
+    }
 }

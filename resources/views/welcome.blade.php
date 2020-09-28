@@ -142,16 +142,16 @@
       </div>
     </section>
 
-    <section class="py-5 bg-light" id="section-about">
+    <section class="section" id="section-about">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-12 col-lg-7 ml-auto order-lg-2 position-relative mb-5" data-aos="fade-up">
             <img src="img/background.jpg" alt="Image" class="img-fluid rounded">
           </div>
-          <div class="col-md-12 col-lg-4 order-lg-1" data-aos="fade-up">
+          <div class="col-md-12 col-lg-4" data-aos="fade-up">
             <h2 class="heading mb-4">PO.Tami Jaya</h2>
             <p class="mb-5">Didirikan pada tahun 1985, PO Tami Jaya adalah layanan bus pariwisata yang berpengalaman melayani perjalanan pariwisata dengan armada bus yang berkualitas dan terpercaya.</p>
-            <p><a href="#"  data-fancybox class="btn btn-success text-white py-2 mr-3 text-uppercase letter-spacing-1">Baca Selengkapnya</a></p>
+            <p><a href="{{ route('about') }}" class="btn btn-success text-white">Baca Selengkapnya</a></p>
           </div>
 
         </div>
@@ -167,7 +167,7 @@
         </div>
         <div class="row" >
           <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="#" class="room">
+            <a href="{{ route('bus') }}" class="room">
               <figure class="img-wrap">
                 <img src="img/suite.jpg" alt="Free website template" class="img-fluid mb-3">
               </figure>
@@ -179,7 +179,7 @@
           </div>
 
           <div class="col-md-6 col-lg-4" data-aos="fade-up">
-            <a href="#" class="room">
+            <a href="{{ route('bus') }}" class="room">
               <figure class="img-wrap">
                 <img src="img/background.jpg" alt="Free website template" class="img-fluid mb-3">
               </figure>

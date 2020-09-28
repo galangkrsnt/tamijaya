@@ -155,9 +155,14 @@ class PesananController extends Controller
         $pdf = PDF::loadview('tiket.e_tiket',['pesanan'=>$pesanan]);
         return $pdf->stream();
      }
+     public function tes($id){
+        $pesanan = Pesanan::where('id',$id)->get();
+        return view('tiket.e_tiket', compact('pesanan'));
+     }
 
-     public function tes()
-    {
-        return view('tiket.e_tiket');
+     public function sorting(Request $request){
+        $idp = $request->get('idpesan');
+        $pesanan = Pesanan::where('id',$idp)->get();
+        return view('admin.pesanan.index', compact('pesanan'));
     }
 }

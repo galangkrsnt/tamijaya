@@ -44,7 +44,7 @@
                 <tr>
                 @foreach ($pembayaran as $pbyr)
                         @php $path = Storage::url('pembayaran/'.$pbyr->path); @endphp
-                        <td><img src="{{ url($path) }}" width="200px" height="100px"/></td>
+                        <td><img src="{{ url($path) }}" /></td>
                         @endforeach
                     </tr>
                     <tr>

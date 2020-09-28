@@ -9,6 +9,9 @@
                 <div class="card-header" style="text-align: center">JADWAL TERSEDIA</div>
 
 
+                @if ($jadwal->isEmpty())
+                <h5 style="text-align: center; padding-top: 30px; padding-bottom: 30px">Maaf jadwal tidak ditemukan. Silahkan ubah tanggal keberangkatan!</h5>
+                @else
             <table class="table" style="width: 100%">
                 <div class="card-body">
                     @if (session('status'))
@@ -29,8 +32,10 @@
                 </thead>
                 <tbody>
                     <?php $no = 0;?>
+                    <?php $s = 0;?>
                     @foreach ($jadwal as $j)
                     <?php $no++ ;?>
+                    <?php $s++ ;?>
                     <tr>
                         <th scope="row">{{ $no }}</th>
                         <td>{{ $j->buses->tipe }}</td>
@@ -42,12 +47,17 @@
 
                         <td><form method="post">
                             @csrf
+                            @if($pesanan[$s-1]==$j->buses->jumlah_kursi)
+                            <p style='color: red'>Penuh</p>
+                            @else
                             <a href="{{ route('pesanan.kursi',$j->id)}}" type="submit" class="btn btn-sm btn-success" >Pesan</a>
+                            @endif
                         </form></td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            @endif
                 </div>
             </div>
         </div>

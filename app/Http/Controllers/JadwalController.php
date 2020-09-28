@@ -50,25 +50,14 @@ class JadwalController extends Controller
         foreach ($jadwal as $j) {
             $kursiBus = $j->buses->jumlah_kursi;
             $id_jadwal = $j->id;
-            $pesanan = DB::table('pesanan')
-                ->select(DB::raw('SUM(jumlah_penumpang)'))
+            $pesanan[] = DB::table('pesanan')
                 ->where('id_jadwal', $id_jadwal)
-                ->first();
-        }
-
-        foreach ($pesanan as $p) {
-            $selisih = $p + $kursiBus;
-            if ($p <= $kursiBus && $selisih <= $jml) {
-                $jadwalTersedia = Jadwal::where('tgl_keberangkatan', $tgl)
-                    ->where('tempat_berangkat', $berangkat)
-                    ->where('tujuan', $tujuan)
-                    ->get();
-            }
+                ->sum('jumlah_penumpang');
         }
 
 
 
-        return view('tiket.hasilCari', compact('jadwal'));
+        return view('tiket.hasilCari', compact('jadwal','pesanan'));
     }
 
     /**
@@ -176,5 +165,11 @@ class JadwalController extends Controller
             $penumpang[] = Penumpang::where('id_pesan',$p->id)->get();
         }
         return view('admin.jadwal.detail', compact('penumpang'));
+    }
+
+    public function sorting(Request $request){
+        $tgl = $request->get('tgl_keberangkatan');
+        $jadwal = Jadwal::where('tgl_keberangkatan',$tgl)->orderBy('tgl_keberangkatan','DESC')->get();
+        return view('admin.jadwal.index', compact('jadwal'));
     }
 }
