@@ -38,7 +38,7 @@
         <div class="col-md-6 col-lg-4" data-aos="fade-up">
           <a href="#" class="room">
             <figure class="img-wrap">
-              <img src="img/kursi2.jpeg" alt="Free website template" class="img-fluid mb-3">
+              <img src="img/kursi2.jpg" alt="Free website template" class="img-fluid mb-3">
             </figure>
             <div class="p-3 text-center room-info">
               <h2>Executive Class</h2>

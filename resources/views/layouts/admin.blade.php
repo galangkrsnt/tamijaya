@@ -36,7 +36,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark pb_navbar pb_scrolled-light scrolled sleep" >
             <div class="container">
-                <a class="navbar-brand" href="index.html"><span class="text-success">Tami</span> Jaya</a>
+                <a class="navbar-brand" href="{{ url('/') }}"><span class="text-success">Tami</span> Jaya</a>
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" href="{{ route('admin.home') }}">Home</a></li>

@@ -10,7 +10,7 @@
 
 
                 @if ($jadwal->isEmpty())
-                <h5 style="text-align: center; padding-top: 30px; padding-bottom: 30px">Maaf jadwal tidak ditemukan. Silahkan ubah tanggal keberangkatan!</h5>
+                <p style="font-family:verdana;  text-align: center; padding-top: 30px; padding-bottom: 30px">Maaf jadwal tidak ditemukan. Silakan ubah tanggal keberangkatan!</p>
                 @else
             <table class="table" style="width: 100%">
                 <div class="card-body">

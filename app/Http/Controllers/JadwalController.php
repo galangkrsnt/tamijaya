@@ -154,6 +154,8 @@ class JadwalController extends Controller
     {
         $jadwal = Jadwal::find($id);
         $jadwal->delete();
+        $pesanan  = Pesanan::where('id_jadwal',$id)->first();
+        $pesanan->delete();
         return redirect()->route('jadwal.index')
             ->with('Berhasil', 'Jadwal berhasil dihapus');
     }
